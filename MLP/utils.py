@@ -22,7 +22,7 @@ from models import MLP1
 
 def pixelwise_normalization(images):
     orig_type= type(images)
-    if orig_type==torch.Tensor: images= images.numpy()
+    if orig_type==torch.Tensor: images= images.cpu().numpy()
 
     #=== compute the mean and stdev of each pixel across images
     pix_mean= np.mean(images, axis=0)
@@ -34,7 +34,7 @@ def pixelwise_normalization(images):
 
     if orig_type==torch.Tensor: images= torch.Tensor(images)
 
-    return images
+    return images.cuda()
 
 
 

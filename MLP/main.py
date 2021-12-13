@@ -22,6 +22,7 @@ import os
 import pickle
 import importlib
 import time
+from tqdm import tqdm
 from CustomSummaryWriter import *
 from models import MLP1, Lin
 from utils import *
@@ -183,8 +184,10 @@ if __name__ == '__main__':
 
     while epoch<max_epochs:
 
+        print(f'Epoch {epoch} starting ...')
+
         loss_sum, total, correct = 0, 0, 0
-        for i, (images, labels) in enumerate(train_loader):
+        for i, (images, labels) in tqdm(enumerate(train_loader)):
 
             images= images.reshape(-1, input_size).to(device)
             if normalize_pixelwise: images= pixelwise_normalization(images) 
@@ -255,7 +258,7 @@ if __name__ == '__main__':
             sshproc= save_checkpoint(state, save_name)
 
         epoch+=1
-
+        print(f"Epoch {epoch} done.")
     writer.close()  # close current event file
     
     # ========== save final model checkpoint =============
@@ -265,7 +268,7 @@ if __name__ == '__main__':
     save_name = f'{output_dir}_final'
     print(f'Saving checkpoint as {save_name}')
     sshproc= save_checkpoint(state, save_name)
-    sshproc.wait()
+    #sshproc.wait()
 
 
 
