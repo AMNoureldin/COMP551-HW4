@@ -135,7 +135,7 @@ class MLP1(nn.Module):
         smask={}
         for lkey in self.lkeys:
             dims= self.layers[lkey].weight.shape
-
+            print(f'Dims: {dims}')
             # if torch.cuda.is_available():
             #     smask[lkey]= torch.cuda.FloatTensor(dims).uniform_()
             #     r = torch.topk(smask[lkey].view(-1), self.ntf[lkey])
@@ -146,11 +146,14 @@ class MLP1(nn.Module):
             #     smask[lkey] = torch.FloatTensor(dims).fill_(0)
             # update 08/10/20:
             device = 'cuda' if torch.cuda.is_available() else 'cpu'
-            smask[lkey]= torch.FloatTensor(dims, device=device).uniform_()
+            smask[lkey]= torch.empty(dims, device=device, dtype=torch.float).uniform_()
             # setting top num_to_freeze values in smask to 1;
             # the corresponding values in the weight tensor will be set to zero and frozen
+            print(f'k: {self.ntf[lkey]}')
+            print(f'View: {smask[lkey].shape}')
             r= torch.topk(smask[lkey].view(-1), self.ntf[lkey])
-            smask[lkey]= torch.FloatTensor(dims, device=device).fill_(0)
+            
+            smask[lkey]= torch.empty(dims, device=device, dtype=torch.float).fill_(0)
 
             for i, v in zip(r.indices, r.values):
                 index = i.item()
