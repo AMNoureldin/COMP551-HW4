@@ -23,9 +23,9 @@ import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 
-from utils import *
-from get_data import get_dataset
-from recorder import Recorder
+from .utils import *
+from .get_data import get_dataset
+from .recorder import Recorder
 
 
 parser = argparse.ArgumentParser(description='Training a ResNet18 on CIFAR or SVHN.')

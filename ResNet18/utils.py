@@ -26,7 +26,7 @@ import torch.backends.cudnn as cudnn
 import torch.optim as optim
 from torch.optim import lr_scheduler
 
-import models
+from . import models
 
 
 def get_model(args, width):
