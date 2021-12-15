@@ -55,8 +55,8 @@ class Recorder(SummaryWriter):
 
 
 		self.fname_stats = 'stats.pt'
-		self.run_local = f'runs/{self.out_dir}'
-		self.ckpt_local = f'checkpoints/{self.out_dir}'
+		self.run_local = f'ResNet18/runs/{self.out_dir}'
+		self.ckpt_local = f'ResNet18/checkpoints/{self.out_dir}'
 		self.max_queue = max_queue
 		self.flush_secs = flush_secs
 		self.queue_size = 0

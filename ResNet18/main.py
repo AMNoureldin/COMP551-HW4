@@ -12,12 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 import time
 import datetime
 import argparse
 import random
 import warnings
 from random import randint
+from tqdm import tqdm
 import numpy as np
 
 import torch
@@ -115,12 +117,12 @@ def main():
     scheduler = get_scheduler(args.scheduler, optimizer, args.num_epochs)
 
     # === save smask
-    torch.save(smask, f'checkpoints/{local_savedir}/smask.pt')
+    torch.save(smask, f'ResNet18/checkpoints/{local_savedir}/smask.pt')
 
     # === save model
     rec.save_full_checkpoint(model, optimizer, scheduler, args, epoch=0, test_acc=0)
     
-    with open(f'checkpoints/{local_savedir}/model_printout.txt', 'w') as f:
+    with open(f'ResNet18/checkpoints/{local_savedir}/model_printout.txt', 'w') as f:
         print(model, file=f)
 
 
@@ -129,7 +131,7 @@ def main():
     # ==============================
     print('\n>>> Starting training!')
     for epoch in range(args.num_epochs):
-        
+        print(f'Epoch {epoch}/{args.num_epochs}: ')
         train_loss, train_acc = train(train_loader, model, criterion, optimizer, epoch, 
                                         sparse, smask, lnames_sorted, num_wtf, device)
         # === validate
@@ -171,8 +173,9 @@ def train(train_loader, model, criterion, optimizer, epoch,
     train_loss = 0
     correct = 0
     total = 0
- 
-    for batch_idx, (inputs, targets) in enumerate(train_loader):
+    
+    pbar = tqdm(enumerate(train_loader), desc="Training: ", file=sys.stdout)
+    for batch_idx, (inputs, targets) in pbar:
         if args.half: inputs = inputs.half()
         inputs, targets = inputs.to(device), targets.to(device)
         optimizer.zero_grad()
@@ -198,6 +201,7 @@ def train(train_loader, model, criterion, optimizer, epoch,
 
         train_loss_avg = train_loss/(batch_idx+1)
         train_acc_avg = 100.*correct/total
+        pbar.set_postfix({'trn_loss': train_loss_avg, 'trn_acc': train_acc_avg})
         
     return train_loss_avg, train_acc_avg
     
@@ -208,7 +212,7 @@ def validate(test_loader, model, criterion, device):
     test_loss, correct, total = 0, 0, 0
     with torch.no_grad():
 
-        for batch_idx, (inputs, targets) in enumerate(test_loader):
+        for batch_idx, (inputs, targets) in tqdm(enumerate(test_loader), desc="Validating: ", file=sys.stdout):
             if args.half: inputs = inputs.half()
             inputs, targets = inputs.to(device), targets.to(device)
             outputs = model(inputs)
