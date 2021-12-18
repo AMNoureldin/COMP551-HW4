@@ -30,6 +30,7 @@ def tabulate_events(dpath, out_dir=''):
             out[tag]=pd.DataFrame(data=dict(zip(steps,np.array([tag_values,wall_time]).transpose())), columns=steps,index=['value','wall_time'])
 
         if len(tags)>0:
+            Path(out_dir).mkdir(parents=True, exist_ok=True)
             df= pd.concat(out.values(),keys=out.keys())
             df.to_csv(f'{out_dir}/{dname}.csv')
             print("- Done")
