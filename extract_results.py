@@ -56,7 +56,7 @@ def tabulate_multi(dpath, out_dir=''):
         steps = tabulate_events(str(in_path), str(out_path))
         if len(steps.values()) > 0:
             # print(steps)
-            pd.concat(steps.values(), keys=steps.keys()).to_csv(f'{dname}_all_result.csv')
+            pd.concat(steps.values(), keys=steps.keys()).to_csv(f'{dpath}/{dname}_all_result.csv')
         print('Done.')
 
 

@@ -1,44 +1,22 @@
-# Are wider nets better given the same number of parameters?
+# Report on the reproduction of "Are wider nets better given the same number of parameters?"
+---
 
-This repository contains the code used for the experiments in the following paper:
+### Reproducing results:
+CLI arguments used to reproduce the results of the paper can be found under `<model>/args.txt`. Each line represents one fit for one dataset. Commands should be run from the main working directory of the project.
 
-["Are wider nets better given the same number of parameters?"](https://arxiv.org/abs/2010.14495)<br/>
-Anna Golubeva, Behnam Neyshabur, Guy Gur-Ari.<br/>
-International Conference on Learning Representations (ICLR), 2021.
+### Extracting CSV results:
 
-**Disclaimer**: this is not an official Google product.
-
-## Getting Started
-Clone this repo, then install all dependencies:
+Run the following commands from the working directory of the project
 ```
-pip install -r requirements.txt
+python extract_results.py -i MLP/runs -o results/MLP -m
+python extract_results.py -i ResNet18/runs -o results/ResNet18 -m
 ```
-The code was tested with Python 3.6.8.
+### Producing graphs:
 
-## Code Organization
-Below is a description of the major sections of the code base. Run `python main.py --help` for a complete description of flags and hyperparameters.
+To produce the graphs shown in the report along with the graphs for each fit, run the following code after extracting the csv results. You will find graphs under results/graph
 
-### Datasets
-This code supports the following datasets: CIFAR-10, CIFAR-100, MNIST, SVHN.
-All datasets will download automatically.
-
-
-### Models
-We consider two types of models: MLP and ResNet18. 
-
- - `MLP`: MLP (i.e., fully-connected feed-forward achitecture) with 1 hidden layer for MNIST experiments
- - `ResNet18`: models with ResNet18 architecture from [this repo](https://github.com/kuangliu/pytorch-cifar/blob/master/models/resnet.py) for CIFAR-10, CIFAR-100 and SVHN
-
-Use the file `generate_arg.py` in the respective folder to set the experiment parameters. Calling
 ```
-python generate_args.py
+python graph_results.py -o results/graphs
 ```
-will print out commands to start the main script from the shell (locally).
-For ResNet18 experiments, it will also dump a dictionary specifying all job parameters into a json file, which is convenient to use if submitting jobs to a cluster or to the cloud.
-
-
-## Citation
-If you use this code for your research, please cite our paper
-["Are wider nets better given the same number of parameters?"](https://arxiv.org/abs/2010.14495).
-
-
+---
+Repository for project can be found at https://github.com/AMNoureldin/COMP551-HW4
