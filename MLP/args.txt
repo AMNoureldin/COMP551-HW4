@@ -1,0 +1,26 @@
+
+python -m main --base_width 8 --width 8 --lr 5.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_8_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 32 --width 32 --lr 80.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_32_width_32_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 32 --lr 136.0 --seed 1 --nwtf_cl 0 --nwtf_fc 19056 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_32_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 128 --width 128 --lr 173.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_128_width_128_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 128 --lr 260.0 --seed 1 --nwtf_cl 0 --nwtf_fc 95280 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_128_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 216 --width 216 --lr 228.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_216_width_216_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 216 --lr 361.0 --seed 1 --nwtf_cl 0 --nwtf_fc 165152 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_216_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 328 --width 328 --lr 306.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_328_width_328_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 328 --lr 491.0 --seed 1 --nwtf_cl 0 --nwtf_fc 254080 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_328_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 512 --width 512 --lr 445.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_512_width_512_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 512 --lr 736.0 --seed 1 --nwtf_cl 0 --nwtf_fc 400176 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_512_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 635 --width 635 --lr 460.0 --seed 1 --nwtf_cl 0 --nwtf_fc 0 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_635_width_635_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
+
+python -m main --base_width 8 --width 635 --lr 875.0 --seed 1 --nwtf_cl 0 --nwtf_fc 497838 --dataset MNIST --normalize_pixelwise --train_subset_size 2048 --no_ES --max_epochs 300 --mbs 256 --no_bias --NTK_style --no_BN --output_dir MNIST_MLP1__NTK_style_base_8_width_635_ReLU_no_bias_train_on_2048_samples_pixelwise_normalization 
